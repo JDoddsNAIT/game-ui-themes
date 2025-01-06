@@ -1,6 +1,6 @@
 {
   "name": "com.jonathan-dodds.gameuithemes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "displayName": "Game UI Themes",
   "description": "This package is a tool for easily managing the apperence of UI objects.",
   "unity": "2022.3",
