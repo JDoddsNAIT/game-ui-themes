@@ -68,19 +68,4 @@ namespace JDoddsNAIT.UITheme
                 _target.sprite = x.Value;
         }
     }
-
-    [System.Serializable]
-    public class TargetAudioSource : TargetField<AudioSource>
-    {
-        [SerializeField] private NamedIndexer<AudioClip> _clip;
-
-        public override void ApplyTheme(Theme theme)
-        {
-            base.ApplyTheme(theme);
-            var x = theme.Sounds[_clip];
-            if (x is not null && Target != null)
-                _target.clip = x.Value;
-        }
-    }
-
 }

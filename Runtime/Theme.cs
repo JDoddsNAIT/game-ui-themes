@@ -20,8 +20,7 @@ namespace JDoddsNAIT.UITheme
         public Palette<Named<Color>> ColorPalette { get => _colorPalette; set => _colorPalette = value; }
         public Palette<Named<TMP_FontAsset>> FontPalette { get => _fontPalette; set => _fontPalette = value; }
         public Palette<Named<Sprite>> SpritePalette { get => _spritePalette; set => _spritePalette = value; }
-        public Palette<Named<AudioClip>> Sounds { get => _sounds; set => _sounds = value; }
-
+        
         public event System.Action<Theme> OnModified;
 
         private void OnValidate()
