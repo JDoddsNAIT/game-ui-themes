@@ -10,13 +10,13 @@ namespace JDoddsNAIT.ThemedUI.Editor
     {
         static bool InstantiatePrefabValidate(string prefabName)
         {
-            return Resources.Load(prefabName) != null;
+            return Resources.Load(SUBFOLDER + prefabName) != null;
         }
 
         static GameObject InstantiatePrefab(string prefabName)
         {
             // double work. fix (maybe) later
-            GameObject prefab = Resources.Load(prefabName) as GameObject;
+            GameObject prefab = Resources.Load(SUBFOLDER + prefabName) as GameObject;
 
             Transform canvas = GetCanvas();
 
@@ -65,6 +65,7 @@ namespace JDoddsNAIT.ThemedUI.Editor
         }
 
         const string // Menu & prefab names
+            SUBFOLDER = "Themed/",
             MENU_NAME = "GameObject/UI/Themed Elements/",
             IMAGE = "Image",
             TEXT = "Text",
