@@ -25,7 +25,7 @@ namespace JDoddsNAIT.ThemedUI
                 if (_currentPageIndex != value)
                 {
                     int delta = value - _currentPageIndex;
-                    _currentPageIndex = value;
+                    _currentPageIndex = (int)Mathf.Repeat(_currentPageIndex, Pages.Count);
                     SetPage(_pages[value], delta);
                 }
             }
