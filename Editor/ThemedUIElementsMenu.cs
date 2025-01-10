@@ -8,15 +8,15 @@ namespace JDoddsNAIT.ThemedUI.Editor
 {
     public class ThemedUIElementsMenu : ScriptableObject
     {
-        static bool InstantiatePrefabValidate(string prefabName)
+        public static bool InstantiatePrefabValidate(string prefabName, string subFolder = SUBFOLDER)
         {
-            return Resources.Load(SUBFOLDER + prefabName) != null;
+            return Resources.Load(subFolder + prefabName) != null;
         }
 
-        static GameObject InstantiatePrefab(string prefabName)
+        public static GameObject InstantiatePrefab(string prefabName, string subFolder = SUBFOLDER)
         {
             // double work. fix (maybe) later
-            GameObject prefab = Resources.Load(SUBFOLDER + prefabName) as GameObject;
+            GameObject prefab = Resources.Load(subFolder + prefabName) as GameObject;
 
             Transform canvas = GetCanvas();
 
@@ -30,7 +30,7 @@ namespace JDoddsNAIT.ThemedUI.Editor
             return newObj;
         }
 
-        private static Transform GetCanvas()
+        public static Transform GetCanvas()
         {
             Transform canvas = null;
             bool foundCanvas = false;
