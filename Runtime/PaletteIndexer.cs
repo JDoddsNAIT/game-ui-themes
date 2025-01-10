@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace JDoddsNAIT.UITheme
+namespace JDoddsNAIT.ThemedUI
 {
     public enum PaletteIndex { Default = 0, Name = 1, Custom = 2 }
 
