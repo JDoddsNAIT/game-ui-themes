@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JDoddsNAIT.UITheme
+namespace JDoddsNAIT.ThemedUI
 {
     public class ThemePainter : MonoBehaviour
     {
@@ -17,8 +17,6 @@ namespace JDoddsNAIT.UITheme
         [SerializeField] private List<TargetImage> _targetImages;
         [Space]
         [SerializeField] private List<TargetText> _targetTexts;
-        [Space]
-        [SerializeField] private List<TargetAudioSource> _targetAudioSources;
 
         private Theme _previousTheme;
 
@@ -77,8 +75,7 @@ namespace JDoddsNAIT.UITheme
         {
             return _targetGraphics.OfType<ITargetField>()
                 .Concat(_targetTexts.OfType<ITargetField>())
-                .Concat(_targetImages.OfType<ITargetField>())
-                .Concat(_targetAudioSources.OfType<ITargetField>());
+                .Concat(_targetImages.OfType<ITargetField>());
         }
     }
 

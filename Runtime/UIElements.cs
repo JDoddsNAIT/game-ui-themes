@@ -1,4 +1,4 @@
-﻿namespace JDoddsNAIT.UITheme
+﻿namespace JDoddsNAIT.ThemedUI
 {
     public enum UIElements
     {
