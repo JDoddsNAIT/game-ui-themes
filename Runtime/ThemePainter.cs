@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JDoddsNAIT.UITheme
+namespace JDoddsNAIT.ThemedUI
 {
     public class ThemePainter : MonoBehaviour
     {

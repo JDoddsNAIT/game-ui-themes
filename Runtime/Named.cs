@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Linq;
 
-namespace JDoddsNAIT.UITheme
+namespace JDoddsNAIT.ThemedUI
 {
     /// <summary>
     /// A variable of type <typeparamref name="TVar"/> with a name attached.

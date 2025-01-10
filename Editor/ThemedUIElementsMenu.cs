@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-namespace JDoddsNAIT.UITheme.Editor
+namespace JDoddsNAIT.ThemedUI.Editor
 {
     public class ThemedUIElementsMenu : ScriptableObject
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace JDoddsNAIT.UITheme
+namespace JDoddsNAIT.ThemedUI
 {
     [CreateAssetMenu(fileName = nameof(Theme), menuName = "JDoddsNAIT/New UI Theme")]
     public class Theme : ScriptableObject

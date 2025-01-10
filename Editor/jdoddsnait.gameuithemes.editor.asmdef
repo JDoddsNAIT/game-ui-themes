@@ -1,6 +1,6 @@
 {
     "name": "jdoddsnait.gameuithemes.editor",
-    "rootNamespace": "JDoddsNAIT.UITheme.Editor ",
+    "rootNamespace": "JDoddsNAIT.ThemedUI.Editor ",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
