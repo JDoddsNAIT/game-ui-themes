@@ -7,16 +7,17 @@ using UnityEngine.EventSystems;
 
 namespace JDoddsNAIT.ThemedUI
 {
-    [RequireComponent(typeof(EventTrigger))]
-    public class Window : MonoBehaviour
+    public class Window : MonoBehaviour, IPointerClickHandler
     {
         enum OpenCloseBehaviour { SetActive, Animation, None, }
 
-        private EventTrigger _eventTrigger;
         private readonly Animator _animator;
 
         [SerializeField] private TextMeshProUGUI _titleText;
         [SerializeField] private string _title;
+        [Space]
+        [SerializeField] private bool _isOpen;
+        [SerializeField] private bool _isFocused;
         [Space]
         [SerializeField] private OpenCloseBehaviour _openBehaviour;
         [SerializeField] private string _openTrigger;
@@ -24,9 +25,6 @@ namespace JDoddsNAIT.ThemedUI
         [SerializeField] private string _closeTrigger;
         [Space]
         [SerializeField] private UnityEvents _events;
-        [Space]
-        [SerializeField] private bool _isOpen;
-        [SerializeField] private bool _isFocused;
 
         public bool IsOpen
         {
@@ -58,7 +56,7 @@ namespace JDoddsNAIT.ThemedUI
 
         private void OnValidate()
         {
-            if (_titleText != null)
+            if (_titleText)
             {
                 _titleText.text = Title;
             }
@@ -66,13 +64,6 @@ namespace JDoddsNAIT.ThemedUI
 
         private void Awake()
         {
-            if (TryGetComponent(out _eventTrigger))
-            {
-                var focusWindow = new EventTrigger.Entry() { eventID = EventTriggerType.PointerDown };
-                focusWindow.callback.AddListener(e => IsFocused = true);
-                _eventTrigger.triggers.Add(focusWindow);
-            }
-
             OnOpen += () =>
             {
                 _events.OnOpened.Invoke();
@@ -205,8 +196,13 @@ namespace JDoddsNAIT.ThemedUI
             }
         }
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            IsFocused = true;
+        }
+
         [System.Serializable]
-        public class UnityEvents
+        protected class UnityEvents
         {
             [field: SerializeField] public UnityEvent OnOpened { get; set; }
             [field: SerializeField] public UnityEvent OnClosed { get; set; }

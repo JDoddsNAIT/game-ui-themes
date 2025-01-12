@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace JDoddsNAIT.ThemedUI
 {
+    [ExecuteAlways]
     public class ThemePainter : MonoBehaviour
     {
         [SerializeField] private Theme _theme;
@@ -24,17 +25,19 @@ namespace JDoddsNAIT.ThemedUI
 
         private void OnEnable()
         {
-            _theme.OnModified += ApplyTheme;
+            if (_theme)
+                _theme.OnModified += ApplyTheme;
         }
 
         private void OnDisable()
         {
-            _theme.OnModified -= ApplyTheme;
+            if (_theme)
+                _theme.OnModified -= ApplyTheme;
         }
 
         private void OnValidate()
         {
-            if (_theme != null)
+            if (_theme)
             {
                 _theme.OnModified += ApplyTheme;
             }
@@ -50,7 +53,7 @@ namespace JDoddsNAIT.ThemedUI
         public void ApplyTheme() => ApplyTheme(_theme);
         public void ApplyTheme(Theme theme)
         {
-            if (_theme != null && _theme == theme)
+            if (_theme && _theme == theme)
             {
                 _targets = GetAllTargets();
                 foreach (var target in _targets)
@@ -60,7 +63,7 @@ namespace JDoddsNAIT.ThemedUI
             }
             else
             {
-                if (_theme != null)
+                if (_theme)
                 {
                     theme.OnModified -= ApplyTheme;
                 }
