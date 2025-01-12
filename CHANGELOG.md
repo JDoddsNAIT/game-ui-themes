@@ -16,3 +16,6 @@ Essentials package is no longer ignored.
 Added window-based menu system, navigator, and paginator.
 
 Renamed essentials package to "Editor Tools". Package now contains the editor scripts for creating elements.
+
+## [0.2.1] - 2025-01-12
+Updated `Draggable` and `Window` sccripts to use Unity's `EventSystem` interfaces.
