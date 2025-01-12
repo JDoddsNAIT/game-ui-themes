@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace JDoddsNAIT.ThemedUI
 {
+    [ExecuteAlways]
     public class ThemePainter : MonoBehaviour
     {
         [SerializeField] private Theme _theme;
