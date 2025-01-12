@@ -56,7 +56,7 @@ namespace JDoddsNAIT.ThemedUI
 
         private void OnValidate()
         {
-            if (_titleText != null)
+            if (_titleText)
             {
                 _titleText.text = Title;
             }
@@ -202,7 +202,7 @@ namespace JDoddsNAIT.ThemedUI
         }
 
         [System.Serializable]
-        public class UnityEvents
+        protected class UnityEvents
         {
             [field: SerializeField] public UnityEvent OnOpened { get; set; }
             [field: SerializeField] public UnityEvent OnClosed { get; set; }
