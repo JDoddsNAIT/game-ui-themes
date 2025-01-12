@@ -7,12 +7,10 @@ using UnityEngine.EventSystems;
 
 namespace JDoddsNAIT.ThemedUI
 {
-    [RequireComponent(typeof(EventTrigger))]
-    public class Window : MonoBehaviour
+    public class Window : MonoBehaviour, IPointerClickHandler
     {
         enum OpenCloseBehaviour { SetActive, Animation, None, }
 
-        private EventTrigger _eventTrigger;
         private readonly Animator _animator;
 
         [SerializeField] private TextMeshProUGUI _titleText;
@@ -66,13 +64,6 @@ namespace JDoddsNAIT.ThemedUI
 
         private void Awake()
         {
-            if (TryGetComponent(out _eventTrigger))
-            {
-                var focusWindow = new EventTrigger.Entry() { eventID = EventTriggerType.PointerDown };
-                focusWindow.callback.AddListener(e => IsFocused = true);
-                _eventTrigger.triggers.Add(focusWindow);
-            }
-
             OnOpen += () =>
             {
                 _events.OnOpened.Invoke();
@@ -203,6 +194,11 @@ namespace JDoddsNAIT.ThemedUI
                 OnClose -= window.Close;
                 window.OnClose -= unsubscribe;
             }
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            IsFocused = true;
         }
 
         [System.Serializable]

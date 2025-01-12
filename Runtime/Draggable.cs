@@ -5,12 +5,11 @@ using UnityEngine.EventSystems;
 
 namespace JDoddsNAIT.ThemedUI
 {
-    [RequireComponent(typeof(EventTrigger), typeof(RectTransform))]
-    public class Draggable : MonoBehaviour
+    [RequireComponent(typeof(RectTransform))]
+    public class Draggable : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         enum ConstrainMode { Always, EndDragOnly }
 
-        private EventTrigger _eventTrigger;
         private RectTransform _parentRectTransform;
 
         [Tooltip("The target Rect Transform. Defaults to this Rect Transform")]
@@ -22,23 +21,6 @@ namespace JDoddsNAIT.ThemedUI
         private RectTransform Target => _rectTransform != null
             ? _rectTransform
             : transform as RectTransform;
-
-        private void Start()
-        {
-            if (TryGetComponent(out _eventTrigger))
-            {
-                var moveMouse = new EventTrigger.Entry() { eventID = EventTriggerType.Drag };
-                moveMouse.callback.AddListener((data) => { MoveToMouse(data as PointerEventData); });
-                _eventTrigger.triggers.Add(moveMouse);
-
-                if (_constrainToParentRect && _constrainMode is ConstrainMode.EndDragOnly)
-                {
-                    var constrainRect = new EventTrigger.Entry() { eventID = EventTriggerType.EndDrag };
-                    constrainRect.callback.AddListener((data) => { ConstrainRect(); });
-                    _eventTrigger.triggers.Add(constrainRect);
-                }
-            }
-        }
 
         private void MoveToMouse(PointerEventData mouse)
         {
@@ -86,6 +68,19 @@ namespace JDoddsNAIT.ThemedUI
             }
 
             Target.ForceUpdateRectTransforms();
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if (_constrainToParentRect && _constrainMode is ConstrainMode.EndDragOnly)
+            {
+                ConstrainRect();
+            }
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            MoveToMouse(eventData);
         }
     }
 }
