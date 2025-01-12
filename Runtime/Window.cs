@@ -16,15 +16,15 @@ namespace JDoddsNAIT.ThemedUI
         [SerializeField] private TextMeshProUGUI _titleText;
         [SerializeField] private string _title;
         [Space]
+        [SerializeField] private bool _isOpen;
+        [SerializeField] private bool _isFocused;
+        [Space]
         [SerializeField] private OpenCloseBehaviour _openBehaviour;
         [SerializeField] private string _openTrigger;
         [SerializeField] private OpenCloseBehaviour _closeBehaviour;
         [SerializeField] private string _closeTrigger;
         [Space]
         [SerializeField] private UnityEvents _events;
-        [Space]
-        [SerializeField] private bool _isOpen;
-        [SerializeField] private bool _isFocused;
 
         public bool IsOpen
         {
